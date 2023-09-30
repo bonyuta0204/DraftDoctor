@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: /app/scripts/entrypoint.sh
+    volumes:
+      - static_volume:/app/collectedstatic
+    expose:
+      - "8000"
+    environment:
+      DJANGO_SETTINGS_MODULE: draft_doctor.settings.production
+
+  nginx:
+    image: nginx:1.19
+    volumes:
+      - ./middleware/nginx:/etc/nginx/conf.d
+      - static_volume:/static
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+volumes:
+  static_volume:
