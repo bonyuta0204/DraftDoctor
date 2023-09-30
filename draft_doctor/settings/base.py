@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -23,18 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-=argejn&&=le=u8vm=z$#&7xn(z*vao%o^rbtp9#%ykqx(a7gk"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
 DJANGO_VITE_ASSETS_PATH = BASE_DIR
 
-# HMRするためDebugと同じにしておく
-DJANGO_VITE_DEV_MODE = DEBUG
-
-# Vite.jsがv3系からポートが変更になったので対応
 DJANGO_VITE_DEV_SERVER_PORT = 5173
-
 
 # Application definition
 
@@ -140,6 +134,6 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 INTERNAL_IPS = [
-    "127.0.0.1",  
+    "127.0.0.1",
     "localhost"
 ]
