@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "draft-doctor"
+version = "0.1.0"
+description = "AI-powered writing assistant to review and improve your drafts effortlessly."
+authors = ["Yuta Nakamura <nakamurayuta0204@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^4.2.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
