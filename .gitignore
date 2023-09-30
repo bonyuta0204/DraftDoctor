@@ -32,7 +32,10 @@ MANIFEST
 *.manifest
 *.spec
 
-frontend/.yarn/cache
+.yarn/cache
+.yarn/install-state.gz
+node_modules
+dist
 
 # Installer logs
 pip-log.txt
