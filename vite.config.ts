@@ -9,6 +9,12 @@ export default defineConfig({
   // 開発環境のmain.tsxが置いてある場所
   root: resolve("./frontend/src"),
 
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'frontend', 'src'),
+    },
+  },
+
   // Djangoでの静的ファイル配信設定である STATIC_URL と同じになるよう設定
   base: "/static/",
 
