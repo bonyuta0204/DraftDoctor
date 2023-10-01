@@ -1,52 +1,83 @@
 # DraftDoctor
 AI-powered writing assistant to review and improve your drafts effortlessly.
 
-
 ## Table of Contents
 - [Features](#features)
+- [Prerequisites](#prerequisites)
 - [Installation](#installation)
-    - [Direct Installation](#direct-installation)
-    - [Using Docker Compose](#using-docker-compose)
+  - [Direct Installation](#direct-installation)
+  - [Using Docker Compose](#using-docker-compose)
 - [Usage](#usage)
-    - [Directly Running the Application](#directly-running-the-application)
-- [Deployment](#deployment)
-- [Authentication Options](#authentication-options)
+  - [Directly Running the Application](#directly-running-the-application)
 - [Contributing](#contributing)
 - [License](#license)
 
 ## Features
+- Document review: Checks for grammar, style, and clarity
 
-- Document review functionality
+## Prerequisites
+- Python 3.x
+- Node.js
+- Docker (optional)
 
 ## Installation
 
 ### Direct Installation
 
-1. **Install Poetry**: Install the poetry package manager for Python. You can install it by running `curl -sSL https://install.python-poetry.org | python3`.
+#### What you'll install
+- Poetry for Python package management
+- Python dependencies from \`pyproject.toml\`
+- Volta for JS runtime management
+- Node.js dependencies
+- Django database migrations
 
-2. **Poetry Install**: Run `poetry install` to install the Python dependencies defined in the `pyproject.toml`.
+1. **Install Poetry**
+   ```bash
+   curl -sSL https://install.python-poetry.org | python3
+   ```
 
-3. **Install Volta**: Run `curl https://get.volta.sh | bash` to instal volta.
+2. **Poetry Install**
+   ```bash
+   poetry install
+   ```
 
-4. **Yarn Install**: Run `yarn install` to install Node.js dependencies.
+3. **Install Volta**
+   ```bash
+   curl https://get.volta.sh | bash
+   ```
 
-5. **Django Migration**: Run `poetry run python manage.py migrate` to apply Django database migrations.
+4. **Yarn Install**
+   ```bash
+   yarn install
+   ```
+
+5. **Django Migration**
+   ```bash
+   poetry run python manage.py migrate
+   ```
 
 ### Using Docker Compose
-
-1. **Docker Compose Up**: Run `docker compose up` to start all services defined in `docker-compose.yml`. This will build and start all the Docker containers.
+1. **Docker Compose Up**
+   ```bash
+   docker compose up
+   ```
 
 ## Usage
 
 ### Directly Running the Application
 
 #### Frontend
-1. Run `yarn dev` to start the Vite development server.
+1. Start the Vite development server.
+   ```bash
+   yarn dev
+   ```
 
 #### Backend
-1. Run the Django `runserver` command with `python manage.py runserver`.
+1. Run the Django development server.
+   ```bash
+   poetry run python manage.py runserver
+   ```
 
 ## License
 
 This project is released under the MIT License for both frontend and backend components.
-
