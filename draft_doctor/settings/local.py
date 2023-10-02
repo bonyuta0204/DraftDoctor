@@ -5,4 +5,4 @@ from .base import *
 DEBUG = True
 DJANGO_VITE_DEV_MODE = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]

@@ -3,10 +3,10 @@ from rest_framework import routers
 
 from api import views
 
-app_name = 'api'
+app_name = "api"
 
 router = routers.SimpleRouter()
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path("", include(router.urls)),
 ]
