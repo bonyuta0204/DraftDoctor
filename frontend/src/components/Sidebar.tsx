@@ -1,5 +1,5 @@
 // src/components/Sidebar.tsx
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text } from '@chakra-ui/react';
 
 const Sidebar = () => {
   return (

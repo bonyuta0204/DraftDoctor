@@ -1,6 +1,6 @@
-import { Box } from "@chakra-ui/react";
-import Sidebar from "@/components/Sidebar";
-import MessageArea from "@/components/MessageArea";
+import { Box } from '@chakra-ui/react';
+import Sidebar from '@/components/Sidebar';
+import MessageArea from '@/components/MessageArea';
 
 function App() {
   return (
