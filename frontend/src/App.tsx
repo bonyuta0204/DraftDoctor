@@ -4,7 +4,7 @@ import MessageArea from "@/components/MessageArea";
 
 function App() {
   return (
-    <Box display="flex" height="100vh">
+    <Box display="flex" height="100vh" width="100vw">
       <Sidebar />
       <MessageArea />
     </Box>
