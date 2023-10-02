@@ -40,12 +40,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_vite",
-    "corsheaders"
+    "corsheaders",
 ]
 
 CORS_ALLOWED_ORIGINS = (
-    'http://localhost:5173',
-    'http://127.0.0.1:5173',
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
 )
 
 
@@ -64,7 +64,7 @@ ROOT_URLCONF = "draft_doctor.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / 'templates'],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -72,7 +72,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "django.template.context_processors.debug"
+                "django.template.context_processors.debug",
             ],
         },
     },
@@ -143,7 +143,4 @@ STATICFILES_DIRS = [DJANGO_VITE_ASSETS_PATH]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-INTERNAL_IPS = [
-    "127.0.0.1",
-    "localhost"
-]
+INTERNAL_IPS = ["127.0.0.1", "localhost"]
