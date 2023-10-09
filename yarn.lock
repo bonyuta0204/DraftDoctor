@@ -4752,6 +4752,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"monaco-editor@npm:^0.44.0":
+  version: 0.44.0
+  resolution: "monaco-editor@npm:0.44.0"
+  checksum: 6e561b23e5e9090cbdbb820dae5895a8bf9d537acc09281756a8c428960da0481461c72f387cc9a2e14bff69ab4359186c98df2dd29d6d109f1ab7189b573a35
+  languageName: node
+  linkType: hard
+
 "ms@npm:2.1.2":
   version: 2.1.2
   resolution: "ms@npm:2.1.2"
@@ -5236,6 +5243,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-monaco-editor@npm:^0.54.0":
+  version: 0.54.0
+  resolution: "react-monaco-editor@npm:0.54.0"
+  dependencies:
+    prop-types: ^15.8.1
+  peerDependencies:
+    "@types/react": ">=16 <= 18"
+    monaco-editor: ^0.39.0
+    react: ">=16 <= 18"
+  checksum: 86ae96e92964f6f999ff5090482b76df412775edc51868f2b255005d5bf3c53c9193de3a398e48a2ba46c990d83d64cace8a3183f3121d79b21b4bc3fc5abed3
+  languageName: node
+  linkType: hard
+
 "react-refresh@npm:^0.14.0":
   version: 0.14.0
   resolution: "react-refresh@npm:0.14.0"
@@ -5691,9 +5711,11 @@ __metadata:
     eslint-plugin-react-hooks: ^4.6.0
     eslint-plugin-react-refresh: ^0.4.3
     framer-motion: ^10.16.4
+    monaco-editor: ^0.44.0
     prettier: ^3.0.3
     react: ^18.2.0
     react-dom: ^18.2.0
+    react-monaco-editor: ^0.54.0
     react-router-dom: ^6.16.0
     swr: ^2.2.4
     typescript: ^5.2.2
