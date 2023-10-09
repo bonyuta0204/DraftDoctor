@@ -2,12 +2,10 @@ import { Box, HStack, Select, Text } from '@chakra-ui/react';
 import type { ChangeEventHandler } from 'react';
 import { useState } from 'react';
 import MonacoEditor from 'react-monaco-editor';
-import hljs from 'highlight.js';
 
 const MessageArea = () => {
-  const [code, setCode] = useState<string>('// Your code here');
-  const [language, setLanguage] = useState<string>('typescript');
-  const [autoDetected, setAutoDetected] = useState<boolean>(false);
+  const [documentText, setDocumentText] = useState<string>('// Your code here');
+  const [language, setLanguage] = useState<string>('plaintext');
 
   const options = {
     selectOnLineNumbers: true,
@@ -25,26 +23,11 @@ const MessageArea = () => {
   ];
 
   const onChange = (newValue: string) => {
-    setCode(newValue);
+    setDocumentText(newValue);
   };
 
   const handleChange: ChangeEventHandler<HTMLSelectElement> = (event) => {
     setLanguage(event.target.value);
-  };
-
-  const onPaste = () => {
-    if (!autoDetected) {
-      // Detect language using highlight.js
-      const detectedLanguage = hljs.highlightAuto(code).language;
-
-      // Update the language state if detected
-      if (detectedLanguage) {
-        setLanguage(detectedLanguage);
-      }
-
-      // Mark as auto-detected so this only runs once
-      setAutoDetected(true);
-    }
   };
 
   return (
@@ -71,9 +54,9 @@ const MessageArea = () => {
       <MonacoEditor
         width="800"
         height="800"
-        language="typescript"
+        language={language}
         theme="vs"
-        value={code}
+        value={documentText}
         options={options}
         onChange={onChange}
       />
