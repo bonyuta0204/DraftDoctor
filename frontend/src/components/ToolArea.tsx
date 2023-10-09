@@ -1,10 +1,27 @@
 import { Box, Text, Flex, VStack, Divider } from '@chakra-ui/react';
 import { faBug } from '@fortawesome/free-solid-svg-icons';
 import ToolButton from '@/components/common/ToolButton';
+import { documentState } from '@/atoms/document';
+import { useRecoilState } from 'recoil';
+import axios from 'axios';
+import { useState } from 'react';
 
 const ToolArea = () => {
-  const onClickErrorCheck = () => {
-    console.log('error check clicked');
+  const [documentText] = useRecoilState(documentState);
+  // error check result state
+  const [errorCheckResult, setErrorCheckResult] = useState<string>();
+
+  /**
+   * POST to error-check API (/api/error-check) with documentText
+   * {
+   *  "documentText": "..."
+   * }
+   */
+  const onClickErrorCheck = async () => {
+    const response = await axios.post('/api/error-check', {
+      documentText: documentText,
+    });
+    setErrorCheckResult(response.data.result);
   };
 
   return (
@@ -20,6 +37,14 @@ const ToolArea = () => {
             text="Error Check"
             onClick={onClickErrorCheck}
           />
+        </Flex>
+        <Divider />
+        <Flex w="100%" p={1}>
+          <Text fontSize="sm"> Result </Text>
+        </Flex>
+        <Divider />
+        <Flex w="100%" alignItems="flex-start" p={2}>
+          <Text fontSize="sm">{errorCheckResult}</Text>
         </Flex>
       </VStack>
     </Box>
