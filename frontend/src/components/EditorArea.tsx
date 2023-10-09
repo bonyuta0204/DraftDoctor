@@ -4,7 +4,7 @@ import { useState } from 'react';
 import MonacoEditor from 'react-monaco-editor';
 
 const MessageArea = () => {
-  const [documentText, setDocumentText] = useState<string>('// Your code here');
+  const [documentText, setDocumentText] = useState<string>('// Your text here');
   const [language, setLanguage] = useState<string>('plaintext');
 
   const options = {
