@@ -1,10 +1,12 @@
 import { Box, HStack, Select, Text } from '@chakra-ui/react';
 import type { ChangeEventHandler } from 'react';
 import { useState } from 'react';
+import { documentState } from '@/atoms/document';
 import MonacoEditor from 'react-monaco-editor';
+import { useRecoilState } from 'recoil';
 
-const MessageArea = () => {
-  const [documentText, setDocumentText] = useState<string>('// Your text here');
+const EditorArea = () => {
+  const [documentText, setDocumentText] = useRecoilState(documentState);
   const [language, setLanguage] = useState<string>('plaintext');
 
   const options = {
@@ -52,8 +54,7 @@ const MessageArea = () => {
         </Select>
       </HStack>
       <MonacoEditor
-        width="800"
-        height="800"
+        width="600"
         language={language}
         theme="vs"
         value={documentText}
@@ -64,4 +65,4 @@ const MessageArea = () => {
   );
 };
 
-export default MessageArea;
+export default EditorArea;
