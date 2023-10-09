@@ -1,33 +1,27 @@
-import { Box, Textarea, Button, HStack } from '@chakra-ui/react';
-import axios from 'axios';
-import { useState } from 'react';
+import { Box, Text, Flex, VStack, Divider } from '@chakra-ui/react';
+import { faBug } from '@fortawesome/free-solid-svg-icons';
+import ToolButton from '@/components/common/ToolButton';
 
 const ToolArea = () => {
-  const [documentText, setDocumentText] = useState<string>('');
-
-  const sendDocumentContent = () => {
-    axios.post('/api/send-message', { documentText });
-  };
-
-  const handleInputChange: React.ChangeEventHandler<HTMLTextAreaElement> = (
-    event,
-  ) => {
-    const inputValue = event.target.value;
-    setDocumentText(inputValue);
+  const onClickErrorCheck = () => {
+    console.log('error check clicked');
   };
 
   return (
-    <Box flex="1" p={4}>
-      <HStack>
-        <Textarea
-          placeholder="Type a message"
-          onChange={handleInputChange}
-          value={documentText}
-        />
-        <Button mt={2} onClick={() => sendDocumentContent()}>
-          Send
-        </Button>
-      </HStack>
+    <Box id="ToolArea" flex="1" p={1} pt={0}>
+      <VStack pt={0} gap="0">
+        <Flex w="100%" p={1}>
+          <Text fontSize="sm"> Tools </Text>
+        </Flex>
+        <Divider />
+        <Flex w="100%" alignItems="flex-start">
+          <ToolButton
+            icon={faBug}
+            text="Error Check"
+            onClick={onClickErrorCheck}
+          />
+        </Flex>
+      </VStack>
     </Box>
   );
 };
