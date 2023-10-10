@@ -72,9 +72,11 @@ def error_check(request):
             HumanMessage(content=document_text),
         ]
 
-        result = llm(messages)
+        response = llm(messages)
+
+        output = parser.parse(response.content)
 
         return Response(
-            {"result": result.content},
+            output.dict(),
             status=status.HTTP_200_OK,
         )

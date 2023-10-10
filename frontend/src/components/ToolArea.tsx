@@ -1,17 +1,25 @@
 import { Box, Text, Flex, VStack, Divider, Spinner } from '@chakra-ui/react';
 import { faBug } from '@fortawesome/free-solid-svg-icons';
 import ToolButton from '@/components/common/ToolButton';
+import ErrorCheckResultItem from '@/components/ErrorCheckResultItem';
 import { documentState } from '@/atoms/document';
 import { useRecoilState } from 'recoil';
 import axios from 'axios';
 import { useState } from 'react';
+import type { ErrorCheckResult } from '@/types/errorCheck';
 
 const ToolArea = () => {
   const [documentText] = useRecoilState(documentState);
   // error check result state
-  const [errorCheckResult, setErrorCheckResult] = useState<string>();
+  const [errorCheckResults, setErrorCheckResults] =
+    useState<ErrorCheckResult[]>();
 
   const [isLoading, setIsLoading] = useState(false);
+
+  type ErrorCheckResponse = {
+    results: ErrorCheckResult[];
+    language: string;
+  };
 
   /**
    * POST to error-check API (/api/error-check) with documentText
@@ -21,10 +29,10 @@ const ToolArea = () => {
    */
   const onClickErrorCheck = async () => {
     setIsLoading(true);
-    const response = await axios.post('/api/error-check', {
+    const response = await axios.post<ErrorCheckResponse>('/api/error-check', {
       documentText: documentText,
     });
-    setErrorCheckResult(response.data.result);
+    setErrorCheckResults(response.data.results);
     setIsLoading(false);
   };
 
@@ -60,7 +68,11 @@ const ToolArea = () => {
               <Text fontSize="sm">Loading...</Text>
             </VStack>
           ) : (
-            <Text fontSize="sm">{errorCheckResult}</Text>
+            <VStack alignItems="flex-start">
+              {errorCheckResults?.map((result, index) => {
+                return <ErrorCheckResultItem key={index} result={result} />;
+              })}
+            </VStack>
           )}
         </Flex>
       </VStack>
