@@ -1,4 +1,4 @@
-import { Box, Text, Flex, VStack, Divider } from '@chakra-ui/react';
+import { Box, Text, Flex, VStack, Divider, Spinner } from '@chakra-ui/react';
 import { faBug } from '@fortawesome/free-solid-svg-icons';
 import ToolButton from '@/components/common/ToolButton';
 import { documentState } from '@/atoms/document';
@@ -11,6 +11,8 @@ const ToolArea = () => {
   // error check result state
   const [errorCheckResult, setErrorCheckResult] = useState<string>();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   /**
    * POST to error-check API (/api/error-check) with documentText
    * {
@@ -18,10 +20,12 @@ const ToolArea = () => {
    * }
    */
   const onClickErrorCheck = async () => {
+    setIsLoading(true);
     const response = await axios.post('/api/error-check', {
       documentText: documentText,
     });
     setErrorCheckResult(response.data.result);
+    setIsLoading(false);
   };
 
   return (
@@ -44,7 +48,20 @@ const ToolArea = () => {
         </Flex>
         <Divider />
         <Flex w="100%" alignItems="flex-start" p={2}>
-          <Text fontSize="sm">{errorCheckResult}</Text>
+          {isLoading ? (
+            <VStack justifyContent="center" alignItems="center" w="100%" p={4}>
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="green.200"
+                size="xl"
+              />
+              <Text fontSize="sm">Loading...</Text>
+            </VStack>
+          ) : (
+            <Text fontSize="sm">{errorCheckResult}</Text>
+          )}
         </Flex>
       </VStack>
     </Box>
