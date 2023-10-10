@@ -8,18 +8,18 @@ import axios from 'axios';
 import { useState } from 'react';
 import type { ErrorCheckResult } from '@/types/errorCheck';
 
+type ErrorCheckResponse = {
+  results: ErrorCheckResult[];
+  language: string;
+};
+
 const ToolArea = () => {
   const [documentText] = useRecoilState(documentState);
-  // error check result state
+
   const [errorCheckResults, setErrorCheckResults] =
     useState<ErrorCheckResult[]>();
 
   const [isLoading, setIsLoading] = useState(false);
-
-  type ErrorCheckResponse = {
-    results: ErrorCheckResult[];
-    language: string;
-  };
 
   /**
    * POST to error-check API (/api/error-check) with documentText
@@ -28,16 +28,24 @@ const ToolArea = () => {
    * }
    */
   const onClickErrorCheck = async () => {
-    setIsLoading(true);
-    const response = await axios.post<ErrorCheckResponse>('/api/error-check', {
-      documentText: documentText,
-    });
-    setErrorCheckResults(response.data.results);
-    setIsLoading(false);
+    try {
+      setIsLoading(true);
+      const response = await axios.post<ErrorCheckResponse>(
+        '/api/error-check',
+        {
+          documentText: documentText,
+        },
+      );
+      setErrorCheckResults(response.data.results);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <Box id="ToolArea" flex="1" p={1} pt={0}>
+    <Box flex="1" p={1} pt={0}>
       <VStack pt={0} gap="0">
         <Flex w="100%" p={1}>
           <Text fontSize="sm"> Tools </Text>
